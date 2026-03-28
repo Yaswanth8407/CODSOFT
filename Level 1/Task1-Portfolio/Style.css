@@ -2,16 +2,19 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
-  color: rgb(198, 199, 199);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #c6c7c7;
+  scroll-behavior: smooth;
 }
 
-body{
-    background: linear-gradient(#0C1A3D ,#04091D);
+body {
+  background: linear-gradient(#0c1a3d, #04091d);
+  overflow-x: hidden;
 }
 
 nav {
-    position: fixed;
+  position: fixed;
+  z-index: 100;
   width: 100vw;
   max-height: fit-content;
   padding: 1rem;
@@ -38,29 +41,77 @@ nav {
   }
 }
 
-main{
-    width: 100vw;
-    height: 100vh;
+main {
+  width: 100vw;
+  height: 101vh;
+  border-bottom: 1px solid rgb(198, 199, 199);
+  display: flex;
+  justify-content: center;
+  padding-top: 159px;
+  .img {
+    position: absolute;
+    z-index: 2;
+  }
+  .role {
+    font-size: 10rem;
+    font-weight: bolder;
     display: flex;
-    justify-content: center;
-    padding-top: 159px;
-    .img{
-        position: absolute;
-        z-index: 2;
-    }
-    .role{
-        font-size: 10rem;
-        font-weight: bolder;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        opacity: 0.5;
-        line-height: 10rem;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    line-height: 10rem;
+  }
 
-        
-    }
-    
-    .role div:first-child{
-        font-size: 9rem;
-    }
+  .role div:first-child {
+    font-size: 9rem;
+  }
+}
+.WRAP {
+  height: 100vh;
+  padding: 100px;
+  border-bottom: 1px solid rgb(198, 199, 199);
+  font-weight: 600;
+  font-size: 1.5rem;
+  position: relative;
+}
+
+.WRAP-2 {
+  height: 10vh;
+  padding: 100px;
+  background-color: rgb(16, 14, 57);
+  font-weight: 600;
+  font-size: 1.5rem;
+  border-bottom: 1px solid rgb(198, 199, 199);
+}
+.WRAP-3 {
+  height: 5vh;
+  background-color: rgb(16, 14, 57);
+  border-bottom: 1px solid rgb(198, 199, 199);
+  font-weight: 600;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.35;
+}
+
+.cont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  button {
+    padding: 1rem 3rem;
+    background: rgb(16, 14, 57);
+    outline: none;
+    border: 2px solid #c6c7c7;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: all 0.2s ease-in;
+  }
+}
+button:hover {
+  scale: 1.07;
+  cursor: pointer;
 }
