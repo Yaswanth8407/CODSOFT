@@ -118,6 +118,22 @@ main {
     transition: all 0.2s ease-in;
   }
 }
+.contact-cont{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.contact-anchors{
+  display: flex;
+  gap: 15px;
+  a svg{
+    /* margin-bottom: 15px; */
+    height: 50px;
+  }
+}
 button:hover {
   scale: 1.07;
   cursor: pointer;
