@@ -1,6 +1,10 @@
 const buttons = document.querySelectorAll(".btn");
-const op = document.querySelector(".op");
-const num = document.querySelector(".num");
+const label = document.querySelector(".label");
+
+let num1 = "";
+let num2 = "";
+let op = "";
+let isSecond = false;
 
 const symbols = {
   plus: "+",
@@ -28,22 +32,56 @@ buttons.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     const id = e.target.id;
 
-    if ("" === num && id === symbols[id]) {
-      alert("first enter number");
-    } else {
-      if (symbols[id]) {
-        op.innerText = symbols[id];
-      } else if (id === "sq") {
-        op.innerHTML = `x<sup>2</sup>`;
-        num.innerText = `${parseFloat(num.innerText) * parseFloat(num.innerText)}`;
-      } else if (id === "reset") {
-        op.innerHTML = ``;
-        num.innerText = ``;
-      } else if (id === "del") {
-        let n = num.innerText;
-        num.innerText = n.slice(0, -1);
-      } else if (numbers[id]) {
-        num.innerText += numbers[id];
+    if (numbers[id]) {
+      if (!isSecond) {
+        num1 += numbers[id];
+        label.innerText = num1;
+      } else {
+        num2 += numbers[id];
+        label.innerText = num2;
+      }
+    } else if (symbols[id]) {
+      if (num1 === "") return;
+      op = symbols[id];
+      isSecond = true;
+      label.innerText = op;
+    } else if (id === "equal") {
+      if (num1 === "" || num2 === "" || op === "") return;
+
+      let result = 0;
+
+      if (op === "+") result = parseFloat(num1) + parseFloat(num2);
+      else if (op === "-") result = parseFloat(num1) - parseFloat(num2);
+      else if (op === "*") result = parseFloat(num1) * parseFloat(num2);
+      else if (op === "/") result = parseFloat(num1) / parseFloat(num2);
+
+      label.innerText = result;
+
+      num1 = result.toString();
+      num2 = "";
+      op = "";
+      isSecond = false;
+    } else if (id === "reset") {
+      label.innerText = "";
+      num1 = "";
+      num2 = "";
+      op = "";
+      isSecond = false;
+    } else if (id === "del") {
+      if (!isSecond) {
+        num1 = num1.slice(0, -1);
+        label.innerText = num1;
+      } else {
+        num2 = num2.slice(0, -1);
+        label.innerText = num2;
+      }
+    } else if (id === "sq") {
+      if (!isSecond && num1 !== "") {
+        num1 = (parseFloat(num1) ** 2).toString();
+        label.innerText = num1;
+      } else if (isSecond && num2 !== "") {
+        num2 = (parseFloat(num2) ** 2).toString();
+        label.innerText = num2;
       }
     }
   });
